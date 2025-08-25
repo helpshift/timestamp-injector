@@ -1,4 +1,4 @@
-package traefik_epoch_header
+package timestamp_injector
 
 import (
     "context"
