@@ -8,7 +8,7 @@ A Traefik middleware plugin that adds an `HS-UEpoch` header to HTTP responses, c
 experimental:
   plugins:
     epochheader:
-      moduleName: "github.com/durvesh-palkar/traefik-epoch-header"
+      moduleName: "github.com/helpshift/timestamp-injector"
       version: "v1.0.1"
 ```
 
