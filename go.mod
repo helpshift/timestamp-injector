@@ -1,3 +1,3 @@
-module github.com/durvesh-palkar/traefik-epoch-header
+module github.com/helpshift/timestamp-injector
 
 go 1.19

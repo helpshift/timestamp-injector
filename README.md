@@ -20,7 +20,7 @@ Enable experimental plugins and specify this plugin:
 experimental:
   plugins:
     epochheader:
-      moduleName: github.com/durvesh-palkar/traefik-epoch-header
+      moduleName: github.com/helpshift/timestamp-injector
       version: v1.0.1
 ```
 
