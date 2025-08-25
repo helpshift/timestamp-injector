@@ -7,28 +7,34 @@ import (
     "time"
 )
 
-// Config holds plugin configuration (empty here).
-type Config struct{}
+// Config holds plugin configuration.
+type Config struct {
+    HeaderName string `json:"headerName,omitempty"`
+}
 
 // CreateConfig creates default plugin configuration.
 func CreateConfig() *Config {
-    return &Config{}
+    return &Config{
+        HeaderName: "HS-UEpoch", // default value
+    }
 }
 
 type EpochHeader struct {
-    name string
-    next http.Handler
+    name       string
+    next       http.Handler
+    headerName string
 }
 
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
     return &EpochHeader{
-        name: name,
-        next: next,
+        name:       name,
+        next:       next,
+        headerName: config.HeaderName,
     }, nil
 }
 
 func (eh *EpochHeader) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
     sec := float64(time.Now().UnixNano()) / 1e9
-    rw.Header().Set("HS-UEpoch", fmt.Sprintf("%.3f", sec))
+    rw.Header().Set(eh.headerName, fmt.Sprintf("%.3f", sec))
     eh.next.ServeHTTP(rw, req)
 }
