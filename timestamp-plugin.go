@@ -1,4 +1,4 @@
-package timestamp_injector
+package traefik_timestamp_header
 
 import (
     "context"
@@ -19,21 +19,21 @@ func CreateConfig() *Config {
     }
 }
 
-type EpochHeader struct {
+type TimestampHeader struct {
     name       string
     next       http.Handler
     headerName string
 }
 
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
-    return &EpochHeader{
+    return &TimestampHeader{
         name:       name,
         next:       next,
         headerName: config.HeaderName,
     }, nil
 }
 
-func (eh *EpochHeader) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
+func (eh *TimestampHeader) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
     sec := float64(time.Now().UnixNano()) / 1e9
     rw.Header().Set(eh.headerName, fmt.Sprintf("%.3f", sec))
     eh.next.ServeHTTP(rw, req)

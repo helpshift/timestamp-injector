@@ -1,4 +1,4 @@
-# Traefik Plugin - Epoch Header
+# Traefik Plugin - Timestamp Header
 
 A Traefik middleware plugin that adds an `HS-UEpoch` header to HTTP responses, containing the current Unix time in `seconds.milliseconds` format (similar to Nginx `$msec`).
 
@@ -7,7 +7,7 @@ A Traefik middleware plugin that adds an `HS-UEpoch` header to HTTP responses, c
 ```yaml
 experimental:
   plugins:
-    epochheader:
+    timestampheader:
       moduleName: "github.com/helpshift/timestamp-injector"
       version: "v1.0.1"
 ```
@@ -19,7 +19,7 @@ Enable experimental plugins and specify this plugin:
 ```yaml
 experimental:
   plugins:
-    epochheader:
+    timestampheader:
       moduleName: github.com/helpshift/timestamp-injector
       version: v1.0.1
 ```
@@ -31,16 +31,16 @@ Attach the middleware to a router:
 ```yaml
 http:
   middlewares:
-    add-epoch-header:
+    add-timestamp-header:
       plugin:
-        epochheader: {}
+        timestampheader: {}
 
   routers:
     my-router:
       rule: "Host(`example.com`)"
       service: my-service
       middlewares:
-        - add-epoch-header
+        - add-timestamp-header
 ```
 
 ## How It Works
