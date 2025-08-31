@@ -15,7 +15,7 @@ type Config struct {
 // CreateConfig creates default plugin configuration.
 func CreateConfig() *Config {
     return &Config{
-        HeaderName: "HS-UEpoch", // default value
+        HeaderName: "epoch-seconds", // default value
     }
 }
 
