@@ -1,4 +1,4 @@
-package traefik_timestamp_injector
+package timestamp_injector
 
 import (
     "context"

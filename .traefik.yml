@@ -1,7 +1,6 @@
-displayName: Timestamp Header
+displayName: Timestamp Injector
 type: middleware
 import: github.com/helpshift/timestamp-injector
 summary: "Adds timepstamp header with current time in seconds.milliseconds (like Nginx $msec)."
 testData:
-  Headers:
-    HeadName: "mytimestamp"
+    HeaderName: "mytimestamp"
