@@ -1,6 +1,7 @@
 # Traefik Plugin - Timestamp Injector
 
 A Traefik middleware plugin that adds an 'epoch-seconds' header to HTTP responses, containing the current Unix time in `seconds.milliseconds` format (similar to Nginx `$msec`).
+NOTE: Headername is configurable or else the default is set as epoch-seconds.
 
 ## Static Configuration
 
